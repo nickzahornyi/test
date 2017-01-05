@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <div id="results"></div>
+  <div id="wait">
+    <img src="http://ruseller.com/lessons/les2559/images/free-gif-preloaders-psds-03.gif" alt="">
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "https://raw.githubusercontent.com/nickzahornyi/test/master/users.json",
+            success: function(data) {
+                $("#results").append(data);
+                $(document).ajaxStart(function() {
+                    $("#wait").css("display", "block");
+                });
+                $(document).ajaxComplete(function() {
+                    $("#wait").css("display", "none");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
